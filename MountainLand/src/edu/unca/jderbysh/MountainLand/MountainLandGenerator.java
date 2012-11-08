@@ -21,6 +21,8 @@ public class MountainLandGenerator extends ChunkGenerator{
 	public List<BlockPopulator> getDefaultPopulators(World world) {
 		ArrayList<BlockPopulator> populators = new ArrayList<BlockPopulator>();
 		populators.add(new MountainLandGrassPopulator());
+		populators.add(new MountainLandGolemPopulator());
+		populators.add(new MountainLandHobbitHolePopulator());
 		return populators;
 	}
 	

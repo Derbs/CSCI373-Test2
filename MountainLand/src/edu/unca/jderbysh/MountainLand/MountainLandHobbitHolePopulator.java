@@ -15,32 +15,41 @@ public class MountainLandHobbitHolePopulator extends BlockPopulator{
 		int x,y,z;
 		for(x = 2; x<14; x++) {
 			for(z = 2; z<14; z++) {
-				if(world.getHighestBlockAt(x,z).getY()<40) {
-					if(random.nextInt(1000)<20) {
+				if(world.getHighestBlockAt(x + chunk.getX()*16,z + chunk.getZ()*16).getY()<35) {
+					if(random.nextInt(1000)<2) {
 						block = world.getHighestBlockAt(x + chunk.getX()*16, z + chunk.getZ()*16);
 						y= block.getY();
-						block.setType(Material.TRAP_DOOR);
+						block.setTypeId(Material.TRAP_DOOR.getId());
 						block.setData((byte)0x0);
-						block = chunk.getBlock(x, y+4, z);
+						block = chunk.getBlock(x, y+10, z);
+						block.setType(Material.GLOWSTONE);
+						block = chunk.getBlock(x, y+11, z);
+						block.setType(Material.GLOWSTONE);
+						block = chunk.getBlock(x, y+12, z);
+						block.setType(Material.GLOWSTONE);
+						block = chunk.getBlock(x, y+13, z);
+						block.setType(Material.GLOWSTONE);
+						block = chunk.getBlock(x, y+14, z);
 						block.setType(Material.GLOWSTONE);
 						int yLim = y-5;
-						for(y=y; y>yLim; y--) {
+						for(y=y-1; y>yLim; y--) {
 							block = chunk.getBlock(x,y,z);
 							block.setType(Material.LADDER);
 							block.setData((byte)0x2);
 						}
+						y=yLim;
 						yLim -= 5;
 						
 						for(int i = 2; i<14; i++) {
 							for(int j = 2; j<14; j++) {
 								for(y=y; y>yLim; y--) {
-									chunk.getBlock(i,y,j).setType(Material.AIR);
+									chunk.getBlock(i,y,j).setTypeId(Material.AIR.getId());
 									//block.setType(Material.AIR);
 								}
-								chunk.getBlock(i,y,j).setType(Material.WOOD);
+								chunk.getBlock(i,y,j).setTypeId(Material.WOOD.getId());
 								
 								if(i == j) {
-									chunk.getBlock(i,y,j).setType(Material.GLOWSTONE);
+									chunk.getBlock(i,y,j).setTypeId(Material.GLOWSTONE.getId());
 								}
 							}
 						}

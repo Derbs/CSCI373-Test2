@@ -1,0 +1,4 @@
+name: MountainLand
+version: .01
+main: edu.unca.jderbysh.MountainLand.MountainLand
+load: startup

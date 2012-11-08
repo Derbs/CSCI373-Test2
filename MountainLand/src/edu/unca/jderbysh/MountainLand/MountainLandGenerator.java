@@ -46,9 +46,12 @@ public class MountainLandGenerator extends ChunkGenerator{
 			for(z = 0; z<16; z++) {
 				blocks[coordsToByte(x,0,z)] = (byte) Material.BEDROCK.getId();
 				
-				double noise = octave.noise(x + chunkX*16, z + chunkZ*16, .01, .5) * 30;
+				double noise = octave.noise(x + chunkX*16, z + chunkZ*16, .0001, .5) * 30;
 				
-				for(y = 1; y<64 + noise; y++) {
+				for(y = 1; y<60 + noise; y++) {
+					blocks[this.coordsToByte(x,y,z)] = (byte) Material.STONE.getId();
+				}
+				for(y=y; y<62+noise; y++) {
 					blocks[this.coordsToByte(x,y,z)] = (byte) Material.DIRT.getId();
 				}
 				blocks[this.coordsToByte(x, y, z)] = (byte) Material.GRASS.getId();
